@@ -54,7 +54,7 @@ typedef struct __attribute__((packed)) dns_question {
 
 // an A record with domain name compression
 typedef struct __attribute__((packed)) dns_answer_v4 {
-    uint16_t name;
+    uint16_t name; // not real, but a pointer
     uint16_t type;
     uint16_t cls;
     uint32_t ttl;
@@ -65,7 +65,7 @@ typedef struct __attribute__((packed)) dns_answer_v4 {
 #define DNS_ANSWER_v4_SIZE (sizeof(dns_answer_v4_t))
 
 typedef struct __attribute__((packed)) dns_answer_v6 {
-    uint16_t name;
+    uint16_t name; // not real, but a pointer
     uint16_t type;
     uint16_t cls;
     uint32_t ttl;
