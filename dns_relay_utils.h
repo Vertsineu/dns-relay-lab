@@ -26,10 +26,15 @@ static void handle_fatal(const char *msg) {
     exit(1);
 }
 
+// send a new datagram (buf, len) 
+// to client (client_info) 
+// through specific socket (fd)
 static inline void send_datagram(int fd, unsigned char *buf, int len, client_info_t client_info) {
     sendto(fd, buf, len, 0, (struct sockaddr *) &client_info.addr, client_info.len);
 }
 
+// if find answer in local host file, type = "local resolve"
+// if relay to upstream, type = "relay"
 static inline void log_result(const char *type, const char *name) {
     printf("query %s, handled as %s\n", name, type);
 }
