@@ -89,11 +89,12 @@ int main() {
             dns_header_t *dns_header = (dns_header_t *) buf;
 
             if (event_fd != listen_fd) {
-                // Handle response from upstream DNS server
+                // handle upstream
                 send_datagram(listen_fd, buf, len, pending_clients[dns_header->id]);
                 continue;
             }
 
+            // handle listen
             // if a dns response datagram, then do nothing
             if (dns_header->qr) {
                 continue;
@@ -103,10 +104,10 @@ int main() {
             dns_question_t question;
             char ip[MAX_ANSWER_COUNT][MAX_IP_BUFFER_SIZE];
             /*
-                TODO: implement the logic about how to deal with a dns request datagram
+                TODO: implement the logic about how to handle datagrams from listen socket
                 Note: 
                     1. before finishing this part, make sure that you have finished other TODO parts
-                    2. using functions in dns_dgram_utils.c and dns_relay_utils.c may helps a lot
+                    2. functions in dns_dgram_utils.c and dns_relay_utils.h may help a lot
                     3. remember to call log_result() after sending a datagram
             */
         }
