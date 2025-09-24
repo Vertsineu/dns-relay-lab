@@ -17,4 +17,4 @@
 #define MAX_IP_BUFFER_SIZE 40
 
 // host file
-#define HOST_FILE_PATH "./hosts"
+#define HOST_FILE_PATH "./mappings"
